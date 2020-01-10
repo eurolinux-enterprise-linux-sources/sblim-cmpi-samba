@@ -1,0 +1,36 @@
+********************************************************************************
+association : Linux_SambaCommonSecurityForShare
+objectPath : Linux_SambaCommonSecurityForShare.SettingData=Linux_SambaCommonSecurityOptions.InstanceID="smbd",Name="Global",ManagedElement=Linux_SambaShareOptions.InstanceID="smbd",Name="wbemsmt-testshare1"
+SourceRole : SettingData
+targetRole : ManagedElement
+sourceClass : Linux_SambaCommonSecurityOptions
+targetClass : Linux_SambaShareOptions
+
+--------------------------------------------------------------------------------
+Instance                                                       enumInstanceNames
+
+--------------------------------------------------------------------------------
+Instance                                                           enumInstances
+
+--------------------------------------------------------------------------------
+Instance                                                                     get
+
+--------------------------------------------------------------------------------
+Instance                                                                     set
+Expected Exception : NOT_SUPPORTED
+
+--------------------------------------------------------------------------------
+Instance                                                                  delete
+Expected Exception : NOT_SUPPORTED
+
+--------------------------------------------------------------------------------
+Association                                                          associators
+
+--------------------------------------------------------------------------------
+Association                                                      associatorNames
+
+--------------------------------------------------------------------------------
+Association                                                           references
+
+--------------------------------------------------------------------------------
+Association                                                       referenceNames

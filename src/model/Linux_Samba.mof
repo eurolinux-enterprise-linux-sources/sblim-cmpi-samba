@@ -1,0 +1,1346 @@
+// ===================================================================
+// This file was created using ECUTE.
+//   Version 2.2.1
+//   by exporting package Linux_Samba-Model
+//   from model Linux_Samba-Model
+//   on 06/26/2006
+// Origin of package: Import of Linux_Samba-Model.mof
+//   on 6/23/2006
+// ===================================================================
+
+// #pragma include ("IBMQualifiers.mof")
+
+
+// ===================================================================
+// Linux_SambaServiceConfiguration
+// ===================================================================
+
+class Linux_SambaServiceConfiguration : CIM_Configuration {
+
+    [Write, Description (
+        "Fully qualified configuration file e.g. /etc/smb.conf")]
+    string ConfigurationFile;
+
+    [Key, Write, Description (
+        "Id of the Samba Service for this configuration")
+        , Override ("Name")]
+    string Name;
+};
+
+
+// ===================================================================
+// Linux_SambaFileNameHandlingOptions
+// ===================================================================
+[Abstract]
+class Linux_SambaFileNameHandlingOptions : CIM_SettingData {
+
+    [Write]
+    boolean CaseSensitive;
+
+    [Write]
+    boolean DosFiletimes;
+
+    [Write]
+    boolean HideDotFiles;
+
+    [Key, Write]
+    string Name;
+};
+
+
+// ===================================================================
+// Linux_SambaShareFileNameHandlingOptions
+// ===================================================================
+
+class Linux_SambaShareFileNameHandlingOptions : Linux_SambaFileNameHandlingOptions {
+
+    [Key]
+    string Name;
+};
+
+
+// ===================================================================
+// Linux_SambaShareOptions
+// ===================================================================
+
+class Linux_SambaShareOptions : CIM_SettingData {
+
+    [Write]
+    boolean Available;
+
+    [Write]
+    string Comment;
+
+    [Key, Write]
+    string Name;
+
+    [Write]
+    string Path;
+
+    [Write]
+    boolean Printable;
+};
+
+
+// ===================================================================
+// Linux_SambaShareSecurityOptions
+// ===================================================================
+
+class Linux_SambaShareSecurityOptions : CIM_SettingData {
+
+    [Write]
+    uint16 CreateMask;
+
+    [Write]
+    uint16 DirectoryMask;
+
+    [Write]
+    uint16 DirectorySecurityMask;
+
+    [Key, Write]
+    string Name;
+};
+
+
+
+// ===================================================================
+// Linux_SambaGlobalOptions
+// ===================================================================
+
+class Linux_SambaGlobalOptions : CIM_SettingData {
+
+    [Write]
+    boolean BindInterfacesOnly;
+
+    [Write]
+    string Interfaces;
+
+    [Key]
+    string Name;
+
+    [Write]
+    string NetbiosAlias;
+
+    [Write]
+    string NetbiosName;
+
+    [Write]
+    boolean Printable;
+
+    [Write]
+    string ServerString;
+
+    [Write]
+    string Workgroup;
+};
+
+
+// ===================================================================
+// Linux_SambaPrinterOptions
+// ===================================================================
+
+class Linux_SambaPrinterOptions : CIM_SettingData {
+
+    [Write]
+    boolean Available;
+
+    [Write]
+    string Comment;
+
+    [Key, Write]
+    string Name;
+
+    [Write]
+    string Path;
+
+    [Write]
+    boolean Printable = "yes";
+
+    [Write]
+    string SystemPrinterName;
+
+    [Static]
+    string getAllSystemDefinedPrinters();
+};
+
+
+// ===================================================================
+// Linux_SambaLoggingOptions
+// ===================================================================
+class Linux_SambaLoggingOptions : CIM_SettingData {
+
+    [Write]
+    boolean DebugHiresTimestamp;
+
+    [Write]
+    boolean DebugPID;
+
+    [Write]
+    boolean DebugTimestamp;
+
+    [Write]
+    boolean DebugUID;
+
+    [Write]
+    string LogFile;
+
+    [Write]
+    string LogLevel;
+
+    [Write]
+    uint32 MaxLogSize;
+
+    [Key, Write]
+    string Name;
+
+    [Write, ValueMap ("\"0\",\"1\",\"2\",\"3\",\"4\""), Values (
+        "\"LOG_ERR\",\"LOG_WARNING\",\"LOG_NOTICE\",\"LOG_INFO\","
+        "\"LOG_DEBUG\"")]
+    uint16 SysLog;
+
+    [Write]
+    boolean SysLogOnly;
+};
+
+
+// ===================================================================
+// Linux_SambaPrinterSecurityOptions
+// ===================================================================
+
+class Linux_SambaPrinterSecurityOptions : CIM_SettingData {
+
+    [Key, Write]
+    string Name;
+};
+
+
+// ===================================================================
+// Linux_SambaGlobalSecurityOptions
+// ===================================================================
+
+class Linux_SambaGlobalSecurityOptions : CIM_SettingData {
+
+    [Write]
+    string AuthMethods;
+
+    [Write]
+    boolean EncryptPasswords;
+
+    [Write]
+    uint8 MinPasswordLength;
+
+    [Key, Write]
+    string Name;
+
+    [Write]
+    boolean NullPasswords;
+
+    [Write, ValueMap (
+        "\"smbpasswd\", \"tdbsam\", \"ldapsam\", \"nisplussam\","
+        " \"mysql\""), Values ("\"0\", \"1\", \"2\", \"3\", \"4\"")
+        ]
+    string PassdbBackend;
+
+    [Write]
+    string SMBPasswdFile;
+
+    [Write, ValueMap (
+        "\"User\", \"Share\", \"Server\", \"Domain\", \"ADS\"")
+        , Values ("\"0\", \"1\", \"2\", \"3\", \"4\"")
+        ]
+    uint8 Security;
+};
+
+
+// ===================================================================
+// Linux_SambaPrintingOptions
+// ===================================================================
+[Abstract]
+class Linux_SambaPrintingOptions : CIM_SettingData {
+
+    [Write]
+    string CupsOptions;
+
+    [Write]
+    boolean DefaultDevMode;
+
+    [Write]
+    uint64 MaxPrintjobs;
+
+    [Write]
+    uint64 MaxReportedPrintjobs;
+
+    [Key, Write]
+    string Name;
+
+    [Write]
+    string PrintCommand;
+
+    [Write]
+    boolean UseClientDriver;
+};
+
+
+// ===================================================================
+// Linux_SambaPrinterPrintingOptions
+// ===================================================================
+
+class Linux_SambaPrinterPrintingOptions : Linux_SambaPrintingOptions {
+
+    [Key, Write]
+    string Name;
+};
+
+
+// ===================================================================
+// Linux_SambaGlobalFileNameHandlingOptions
+// ===================================================================
+
+class Linux_SambaGlobalFileNameHandlingOptions : Linux_SambaFileNameHandlingOptions {
+
+    [Key, Override ("Name")]
+    string Name;
+};
+
+
+// ===================================================================
+// Linux_SambaGlobalPrintingOptions
+// ===================================================================
+
+class Linux_SambaGlobalPrintingOptions : Linux_SambaPrintingOptions {
+
+    [Key, Override ("Name")]
+    string Name;
+
+    [Write]
+    uint64 PrintcapCacheTime;
+
+    [Write]
+    string SystemPrinterName;
+};
+
+
+// ===================================================================
+// Linux_SambaUser
+// ===================================================================
+
+class Linux_SambaUser : CIM_ManagedElement {
+
+    [Key, Write]
+    string SambaUserName;
+
+    [Write, Read (false)]
+    string SambaUserPassword;
+
+    [Write]
+    string SystemUserName;
+
+    [Static]
+    string getAllSystemGroups();
+
+    [Static]
+    string getAllSystemUsers();
+};
+
+
+// ===================================================================
+// Linux_SambaCommonSecurityOptions
+// ===================================================================
+
+class Linux_SambaCommonSecurityOptions : CIM_SettingData {
+
+    [Write]
+    boolean GuestOK;
+
+    [Write]
+    boolean GuestOnly;
+
+    [Write]
+    string HostsAllow;
+
+    [Write]
+    string HostsDeny;
+
+    [Key]
+    string Name;
+
+    [Write]
+    boolean ReadOnly;
+};
+
+
+// ===================================================================
+// Linux_SambaWinsOptions
+// ===================================================================
+class Linux_SambaWinsOptions : CIM_SettingData {
+
+    [Write]
+    string DNS_Proxy;
+
+    [Key, Write]
+    string Name;
+
+    [Write]
+    string WINSHook;
+
+    [Write]
+    boolean WINSProxy;
+
+    [Write]
+    string WINSServer;
+
+    [Write]
+    boolean WINSSupport;
+};
+
+
+// ===================================================================
+// Linux_SambaBrowseOptions
+// ===================================================================
+[Abstract]
+class Linux_SambaBrowseOptions : CIM_SettingData {
+
+    [Write]
+    boolean Browsable;
+
+    [Key, Write]
+    string Name;
+};
+
+
+// ===================================================================
+// Linux_SambaShareBrowseOptions
+// ===================================================================
+
+class Linux_SambaShareBrowseOptions : Linux_SambaBrowseOptions {
+
+    [Key, Write]
+    string Name;
+};
+
+
+// ===================================================================
+// Linux_SambaGlobalBrowseOptions
+// ===================================================================
+
+class Linux_SambaGlobalBrowseOptions : Linux_SambaBrowseOptions {
+
+    [Write, ValueMap ("\"No\",\n\"Yes\",\n\"Auto\""), Values (
+        "\"0\",\n\"1\",\n\"2\"")]
+    uint16 DomainMaster;
+
+    [Key, Override ("Name")]
+    string Name;
+};
+
+
+// ===================================================================
+// Linux_SambaScriptingOptions
+// ===================================================================
+
+class Linux_SambaScriptingOptions : CIM_SettingData {
+
+    [Key, Write]
+    string Name;
+
+    [Write]
+    string addGroupScript;
+
+    [Write]
+    string addPrinterCommand;
+
+    [Write]
+    string addShareCommand;
+
+    [Write]
+    string addUserScript;
+
+    [Write]
+    string addUsertoGroupScript;
+
+    [Write]
+    string deleteGrouprScript;
+
+    [Write]
+    string deleteUserScript;
+
+    [Write]
+    string deleteUserfromGroupScript;
+
+    [Write]
+    string setPrimaryGroupScript;
+};
+
+
+// ===================================================================
+// Linux_SambaProtocolOptions
+// ===================================================================
+[Abstract]
+class Linux_SambaProtocolOptions : CIM_SettingData {
+
+    [Write, ValueMap (
+        "\"Auto\",\"winnt\",\"win2k\""), Values (
+        "\"0\",\"1\",\"2\"")]
+    uint8 AclCompatibility;
+
+    [Write]
+    boolean EASupport;
+
+    [Write]
+    boolean NTACLSupport;
+
+    [Key, Write]
+    string Name;
+};
+
+
+// ===================================================================
+// Linux_SambaShareProtocolOptions
+// ===================================================================
+
+class Linux_SambaShareProtocolOptions : Linux_SambaProtocolOptions {
+
+    [Key, Write]
+    string Name;
+};
+
+
+// ===================================================================
+// Linux_SambaGlobalProtocolOptions
+// ===================================================================
+
+class Linux_SambaGlobalProtocolOptions : Linux_SambaProtocolOptions {
+
+    [Key, Write]
+    string Name;
+};
+
+
+// ===================================================================
+// Linux_SambaHost
+// ===================================================================
+
+class Linux_SambaHost : CIM_ManagedElement {
+
+    [Key, Write]
+    string Name;
+};
+
+
+// ===================================================================
+// Linux_SambaWinbindOptions
+// ===================================================================
+class Linux_SambaWinbindOptions : CIM_SettingData {
+
+    [Key, Write]
+    string Name;
+};
+
+
+// ===================================================================
+// Linux_SambaGroup
+// ===================================================================
+
+class Linux_SambaGroup : CIM_ManagedElement {
+
+    [Key, Write]
+    string SambaGroupName;
+
+    [Write]
+    string SystemGroupName;
+
+    [Static]
+    string getAllSystemGroups();
+};
+
+
+// ===================================================================
+// Linux_SambaPrinterBrowseOptions
+// ===================================================================
+
+class Linux_SambaPrinterBrowseOptions : Linux_SambaBrowseOptions {
+
+    [Key, Write]
+    string Name;
+};
+
+
+// ===================================================================
+// Linux_SambaPrinterSecurityForPrinter
+// ===================================================================
+[Association]
+class Linux_SambaPrinterSecurityForPrinter : CIM_ElementSettingData {
+
+    [Key, Min (1), Max (1)]
+    Linux_SambaPrinterSecurityOptions REF SettingData;
+
+    [Key, Min (1), Max (1)]
+    Linux_SambaPrinterOptions REF ManagedElement;
+};
+
+
+// ===================================================================
+// Linux_SambaGlobalSecurityForGlobal
+// ===================================================================
+[Association]
+class Linux_SambaGlobalSecurityForGlobal : CIM_ElementSettingData {
+
+    [Min (1), Max (1)]
+    Linux_SambaGlobalSecurityOptions REF SettingData;
+
+    [Min (1), Max (1)]
+    Linux_SambaGlobalOptions REF ManagedElement;
+};
+
+
+// ===================================================================
+// Linux_SambaLoggingForGlobal
+// ===================================================================
+[Association]
+class Linux_SambaLoggingForGlobal : CIM_ElementSettingData {
+
+    [Min (1), Max (1)]
+    Linux_SambaLoggingOptions REF SettingData;
+
+    [Min (1), Max (1)]
+    Linux_SambaGlobalOptions REF ManagedElement;
+};
+
+
+// ===================================================================
+// Linux_SambaPrinterPrintingForPrinter
+// ===================================================================
+[Association]
+class Linux_SambaPrinterPrintingForPrinter : CIM_ElementSettingData {
+
+    [Min (1), Max (1)]
+    Linux_SambaPrinterPrintingOptions REF SettingData;
+
+    [Min (1), Max (1)]
+    Linux_SambaPrinterOptions REF ManagedElement;
+};
+
+
+// ===================================================================
+// Linux_SambaShareSecurityForShare
+// ===================================================================
+[Association]
+class Linux_SambaShareSecurityForShare : CIM_ElementSettingData {
+
+    [Min (1), Max (1)]
+    Linux_SambaShareSecurityOptions REF SettingData;
+
+    [Min (1), Max (1)]
+    Linux_SambaShareOptions REF ManagedElement;
+};
+
+
+// ===================================================================
+// Linux_SambaShareFileNameHandlingForShare
+// ===================================================================
+[Association]
+class Linux_SambaShareFileNameHandlingForShare : CIM_ElementSettingData {
+
+    [Min (1), Max (1)]
+    Linux_SambaShareFileNameHandlingOptions REF SettingData;
+
+    [Min (1), Max (1)]
+    Linux_SambaShareOptions REF ManagedElement;
+};
+
+
+// ===================================================================
+// Linux_SambaServiceConfigurationForService
+// ===================================================================
+[Association]
+class Linux_SambaServiceConfigurationForService : CIM_ElementConfiguration {
+
+    [Key, Min (1), Max (1)]
+    Linux_SambaServiceConfiguration REF Configuration;
+
+    [Key, Min (1), Max (1)]
+    Linux_SambaService REF Element;
+};
+
+
+// ===================================================================
+// Linux_SambaGlobalFileNameHandlingForGlobal
+// ===================================================================
+[Association]
+class Linux_SambaGlobalFileNameHandlingForGlobal : CIM_ElementSettingData {
+
+    [Min (1), Max (1)]
+    Linux_SambaGlobalOptions REF ManagedElement;
+
+    [Min (1), Max (1)]
+    Linux_SambaGlobalFileNameHandlingOptions REF SettingData;
+};
+
+
+// ===================================================================
+// Linux_SambaGlobalPrintingForGlobal
+// ===================================================================
+[Association]
+class Linux_SambaGlobalPrintingForGlobal : CIM_ElementSettingData {
+
+    [Min (1), Max (1)]
+    Linux_SambaGlobalPrintingOptions REF SettingData;
+
+    [Min (1), Max (1)]
+    Linux_SambaGlobalOptions REF ManagedElement;
+};
+
+
+// ===================================================================
+// Linux_SambaShareSecurityForGlobal
+// ===================================================================
+[Association]
+class Linux_SambaShareSecurityForGlobal : CIM_ElementSettingData {
+
+    [Min (1), Max (1)]
+    Linux_SambaShareSecurityOptions REF SettingData;
+
+    [Min (1), Max (1)]
+    Linux_SambaGlobalOptions REF ManagedElement;
+};
+
+
+// ===================================================================
+// Linux_SambaPrinterSecurityForGlobal
+// ===================================================================
+[Association]
+class Linux_SambaPrinterSecurityForGlobal : CIM_ElementSettingData {
+
+    [Min (1), Max (1)]
+    Linux_SambaPrinterSecurityOptions REF SettingData;
+
+    [Min (1), Max (1)]
+    Linux_SambaGlobalOptions REF ManagedElement;
+};
+
+
+// ===================================================================
+// Linux_SambaCommonSecurityForGlobal
+// ===================================================================
+[Association]
+class Linux_SambaCommonSecurityForGlobal : CIM_ElementSettingData {
+
+    [Min (1), Max (1)]
+    Linux_SambaCommonSecurityOptions REF SettingData;
+
+    [Min (1), Max (1)]
+    Linux_SambaGlobalOptions REF ManagedElement;
+};
+
+
+// ===================================================================
+// Linux_SambaCommonSecurityForPrinter
+// ===================================================================
+[Association]
+class Linux_SambaCommonSecurityForPrinter : CIM_ElementSettingData {
+
+    [Min (1), Max (1)]
+    Linux_SambaCommonSecurityOptions REF SettingData;
+
+    [Min (1), Max (1)]
+    Linux_SambaPrinterOptions REF ManagedElement;
+};
+
+
+// ===================================================================
+// Linux_SambaCommonSecurityForShare
+// ===================================================================
+[Association]
+class Linux_SambaCommonSecurityForShare : CIM_ElementSettingData {
+
+    [Min (1), Max (1)]
+    Linux_SambaCommonSecurityOptions REF SettingData;
+
+    [Min (1), Max (1)]
+    Linux_SambaShareOptions REF ManagedElement;
+};
+
+
+// ===================================================================
+// Linux_SambaShareForService
+// ===================================================================
+[Association]
+class Linux_SambaShareForService : CIM_ElementSettingData {
+
+    Linux_SambaShareOptions REF SettingData;
+
+    [Min (1), Max (1)]
+    Linux_SambaService REF ManagedElement;
+};
+
+
+// ===================================================================
+// Linux_SambaPrinterForService
+// ===================================================================
+[Association]
+class Linux_SambaPrinterForService : CIM_ElementSettingData {
+
+    Linux_SambaPrinterOptions REF SettingData;
+
+    [Min (1), Max (1)]
+    Linux_SambaService REF ManagedElement;
+};
+
+
+// ===================================================================
+// Linux_SambaGuestAccountForGlobal
+// ===================================================================
+[Association, Aggregation]
+class Linux_SambaGuestAccountForGlobal : CIM_Component {
+
+    [Aggregate, Min (1), Max (1)]
+    Linux_SambaUser REF PartComponent;
+
+    [Min (1), Max (1)]
+    Linux_SambaGlobalOptions REF GroupComponent;
+};
+
+
+// ===================================================================
+// Linux_SambaAdminUsersForGlobal
+// ===================================================================
+[Association, Aggregation]
+class Linux_SambaAdminUsersForGlobal : CIM_Component {
+
+    [Aggregate]
+    Linux_SambaUser REF PartComponent;
+
+    [Min (1), Max (1)]
+    Linux_SambaGlobalOptions REF GroupComponent;
+};
+
+
+// ===================================================================
+// Linux_SambaReadListForGlobal
+// ===================================================================
+[Association, Aggregation]
+class Linux_SambaReadListForGlobal : CIM_Component {
+
+    [Aggregate]
+    Linux_SambaUser REF PartComponent;
+
+    [Min (1), Max (1)]
+    Linux_SambaGlobalOptions REF GroupComponent;
+};
+
+
+// ===================================================================
+// Linux_SambaWriteListForGlobal
+// ===================================================================
+[Association, Aggregation]
+class Linux_SambaWriteListForGlobal : CIM_Component {
+
+    [Aggregate]
+    Linux_SambaUser REF PartComponent;
+
+    [Min (1), Max (1)]
+    Linux_SambaGlobalOptions REF GroupComponent;
+};
+
+
+// ===================================================================
+// Linux_SambaForceUserForGlobal
+// ===================================================================
+[Association, Aggregation]
+class Linux_SambaForceUserForGlobal : CIM_Component {
+
+    [Aggregate, Min (1), Max (1)]
+    Linux_SambaUser REF PartComponent;
+
+    [Min (1), Max (1)]
+    Linux_SambaGlobalOptions REF GroupComponent;
+};
+
+
+// ===================================================================
+// Linux_SambaInvalidUsersForGlobal
+// ===================================================================
+[Association, Aggregation]
+class Linux_SambaInvalidUsersForGlobal : CIM_Component {
+
+    [Aggregate]
+    Linux_SambaUser REF PartComponent;
+
+    [Min (1), Max (1)]
+    Linux_SambaGlobalOptions REF GroupComponent;
+};
+
+
+// ===================================================================
+// Linux_SambaValidUsersForGlobal
+// ===================================================================
+[Association, Aggregation]
+class Linux_SambaValidUsersForGlobal : CIM_Component {
+
+    [Aggregate]
+    Linux_SambaUser REF PartComponent;
+
+    [Min (1), Max (1)]
+    Linux_SambaGlobalOptions REF GroupComponent;
+};
+
+
+// ===================================================================
+// Linux_SambaPrinterAdminForGlobal
+// ===================================================================
+[Association, Aggregation]
+class Linux_SambaPrinterAdminForGlobal : CIM_Component {
+
+    [Aggregate]
+    Linux_SambaUser REF PartComponent;
+
+    [Min (1), Max (1)]
+    Linux_SambaGlobalOptions REF GroupComponent;
+};
+
+
+// ===================================================================
+// Linux_SambaWinsForGlobal
+// ===================================================================
+[Association]
+class Linux_SambaWinsForGlobal : CIM_ElementSettingData {
+
+    [Min (1), Max (1)]
+    Linux_SambaWinsOptions REF SettingData;
+
+    [Min (1), Max (1)]
+    Linux_SambaGlobalOptions REF ManagedElement;
+};
+
+
+// ===================================================================
+// Linux_SambaPrinterAdminForPrinter
+// ===================================================================
+[Association, Aggregation]
+class Linux_SambaPrinterAdminForPrinter : CIM_Component {
+
+    [Aggregate]
+    Linux_SambaUser REF PartComponent;
+
+    Linux_SambaPrinterOptions REF GroupComponent;
+};
+
+
+// ===================================================================
+// Linux_SambaReadListForPrinter
+// ===================================================================
+[Association, Aggregation]
+class Linux_SambaReadListForPrinter : CIM_Component {
+
+    [Aggregate]
+    Linux_SambaUser REF PartComponent;
+
+    Linux_SambaPrinterOptions REF GroupComponent;
+};
+
+
+// ===================================================================
+// Linux_SambaWriteListForPrinter
+// ===================================================================
+[Association, Aggregation]
+class Linux_SambaWriteListForPrinter : CIM_Component {
+
+    [Aggregate]
+    Linux_SambaUser REF PartComponent;
+
+    Linux_SambaPrinterOptions REF GroupComponent;
+};
+
+
+// ===================================================================
+// Linux_SambaForceUserForPrinter
+// ===================================================================
+[Association, Aggregation]
+class Linux_SambaForceUserForPrinter : CIM_Component {
+
+    [Aggregate]
+    Linux_SambaUser REF PartComponent;
+
+    Linux_SambaPrinterOptions REF GroupComponent;
+};
+
+
+// ===================================================================
+// Linux_SambaInvalidUsersForPrinter
+// ===================================================================
+[Association, Aggregation]
+class Linux_SambaInvalidUsersForPrinter : CIM_Component {
+
+    [Aggregate]
+    Linux_SambaUser REF PartComponent;
+
+    Linux_SambaPrinterOptions REF GroupComponent;
+};
+
+
+// ===================================================================
+// Linux_SambaValidUsersForPrinter
+// ===================================================================
+[Association, Aggregation]
+class Linux_SambaValidUsersForPrinter : CIM_Component {
+
+    [Aggregate]
+    Linux_SambaUser REF PartComponent;
+
+    Linux_SambaPrinterOptions REF GroupComponent;
+};
+
+
+// ===================================================================
+// Linux_SambaAdminUsersForShare
+// ===================================================================
+[Association, Aggregation]
+class Linux_SambaAdminUsersForShare : CIM_Component {
+
+    [Aggregate]
+    Linux_SambaUser REF PartComponent;
+
+    Linux_SambaShareOptions REF GroupComponent;
+};
+
+
+// ===================================================================
+// Linux_SambaReadListForShare
+// ===================================================================
+[Association, Aggregation]
+class Linux_SambaReadListForShare : CIM_Component {
+
+    [Aggregate]
+    Linux_SambaUser REF PartComponent;
+
+    Linux_SambaShareOptions REF GroupComponent;
+};
+
+
+// ===================================================================
+// Linux_SambaWriteListForShare
+// ===================================================================
+[Association, Aggregation]
+class Linux_SambaWriteListForShare : CIM_Component {
+
+    [Aggregate]
+    Linux_SambaUser REF PartComponent;
+
+    Linux_SambaShareOptions REF GroupComponent;
+};
+
+
+// ===================================================================
+// Linux_SambaForceUserForShare
+// ===================================================================
+[Association, Aggregation]
+class Linux_SambaForceUserForShare : CIM_Component {
+
+    [Aggregate]
+    Linux_SambaUser REF PartComponent;
+
+    Linux_SambaShareOptions REF GroupComponent;
+};
+
+
+// ===================================================================
+// Linux_SambaInvalidUsersForShare
+// ===================================================================
+[Association, Aggregation]
+class Linux_SambaInvalidUsersForShare : CIM_Component {
+
+    [Aggregate]
+    Linux_SambaUser REF PartComponent;
+
+    Linux_SambaShareOptions REF GroupComponent;
+};
+
+
+// ===================================================================
+// Linux_SambaValidUsersForShare
+// ===================================================================
+[Association, Aggregation]
+class Linux_SambaValidUsersForShare : CIM_Component {
+
+    [Aggregate]
+    Linux_SambaUser REF PartComponent;
+
+    Linux_SambaShareOptions REF GroupComponent;
+};
+
+
+// ===================================================================
+// Linux_SambaShareBrowseForShare
+// ===================================================================
+[Association]
+class Linux_SambaShareBrowseForShare : CIM_ElementSettingData {
+
+    [Min (1), Max (1)]
+    Linux_SambaShareBrowseOptions REF SettingData;
+
+    [Min (1), Max (1)]
+    Linux_SambaShareOptions REF ManagedElement;
+};
+
+
+// ===================================================================
+// Linux_SambaGlobalBrowseForGlobal
+// ===================================================================
+[Association]
+class Linux_SambaGlobalBrowseForGlobal : CIM_ElementSettingData {
+
+    [Min (1), Max (1)]
+    Linux_SambaGlobalBrowseOptions REF SettingData;
+
+    [Min (1), Max (1)]
+    Linux_SambaGlobalOptions REF ManagedElement;
+};
+
+
+// ===================================================================
+// Linux_SambaUsersForService
+// ===================================================================
+[Association, Aggregation]
+class Linux_SambaUsersForService : CIM_Component {
+
+    [Aggregate]
+    Linux_SambaUser REF PartComponent;
+
+    [Min (1), Max (1)]
+    Linux_SambaService REF GroupComponent;
+};
+
+
+// ===================================================================
+// Linux_SambaScriptingForGlobal
+// ===================================================================
+[Association]
+class Linux_SambaScriptingForGlobal : CIM_ElementSettingData {
+
+    [Min (1), Max (1)]
+    Linux_SambaGlobalOptions REF ManagedElement;
+
+    [Min (1), Max (1)]
+    Linux_SambaScriptingOptions REF SettingData;
+};
+
+
+// ===================================================================
+// Linux_SambaShareProtocolForShare
+// ===================================================================
+[Association]
+class Linux_SambaShareProtocolForShare : CIM_ElementSettingData {
+
+    [Min (1), Max (1)]
+    Linux_SambaShareOptions REF ManagedElement;
+
+    [Min (1), Max (1)]
+    Linux_SambaShareProtocolOptions REF SettingData;
+};
+
+
+// ===================================================================
+// Linux_SambaGlobalProtocolForGlobal
+// ===================================================================
+[Association]
+class Linux_SambaGlobalProtocolForGlobal : CIM_ElementSettingData {
+
+    [Min (1), Max (1)]
+    Linux_SambaGlobalProtocolOptions REF SettingData;
+
+    [Min (1), Max (1)]
+    Linux_SambaGlobalOptions REF ManagedElement;
+};
+
+
+// ===================================================================
+// Linux_SambaPrinterBrowseForPrinter
+// ===================================================================
+[Association]
+class Linux_SambaPrinterBrowseForPrinter : CIM_ElementSettingData {
+
+    [Min (1), Max (1)]
+    Linux_SambaPrinterOptions REF ManagedElement;
+
+    [Min (1), Max (1)]
+    Linux_SambaPrinterBrowseOptions REF SettingData;
+};
+
+
+// ===================================================================
+// Linux_SambaGroupForUser
+// ===================================================================
+[Association, Aggregation]
+class Linux_SambaGroupForUser : CIM_Component {
+
+    [Aggregate]
+    Linux_SambaGroup REF GroupComponent;
+
+    [Min (1), Max (1)]
+    Linux_SambaUser REF PartComponent;
+};
+
+
+// ===================================================================
+// Linux_SambaWinbindForGlobal
+// ===================================================================
+[Association]
+class Linux_SambaWinbindForGlobal : CIM_ElementSettingData {
+
+    [Min (1), Max (1)]
+    Linux_SambaWinbindOptions REF SettingData;
+
+    [Min (1), Max (1)]
+    Linux_SambaGlobalOptions REF ManagedElement;
+};
+
+
+// ===================================================================
+// Linux_SambaForceGroupForGlobal
+// ===================================================================
+[Association, Aggregation]
+class Linux_SambaForceGroupForGlobal : CIM_Component {
+
+    Linux_SambaGlobalOptions REF GroupComponent;
+
+    [Aggregate, Min (1), Max (1)]
+    Linux_SambaGroup REF PartComponent;
+};
+
+
+// ===================================================================
+// Linux_SambaForceGroupForShare
+// ===================================================================
+[Association, Aggregation]
+class Linux_SambaForceGroupForShare : CIM_Component {
+
+    Linux_SambaShareOptions REF GroupComponent;
+
+    [Aggregate, Min (1), Max (1)]
+    Linux_SambaGroup REF PartComponent;
+};
+
+
+// ===================================================================
+// Linux_SambaForceGroupForPrinter
+// ===================================================================
+[Association, Aggregation]
+class Linux_SambaForceGroupForPrinter : CIM_Component {
+
+    Linux_SambaPrinterOptions REF GroupComponent;
+
+    [Aggregate, Min (1), Max (1)]
+    Linux_SambaGroup REF PartComponent;
+};
+
+
+// ===================================================================
+// Linux_SambaHostsForService
+// ===================================================================
+[Association, Aggregation]
+class Linux_SambaHostsForService : CIM_Component {
+
+    [Aggregate]
+    Linux_SambaHost REF PartComponent;
+
+    [Min (1), Max (1)]
+    Linux_SambaService REF GroupComponent;
+};
+
+
+// ===================================================================
+// Linux_SambaAllowHostsForGlobal
+// ===================================================================
+[Association, Aggregation]
+class Linux_SambaAllowHostsForGlobal : CIM_Component {
+
+    [Aggregate]
+    Linux_SambaHost REF PartComponent;
+
+    [Min (1), Max (1)]
+    Linux_SambaGlobalOptions REF GroupComponent;
+};
+
+
+// ===================================================================
+// Linux_SambaAllowHostsForPrinter
+// ===================================================================
+[Association, Aggregation]
+class Linux_SambaAllowHostsForPrinter : CIM_Component {
+
+    [Aggregate]
+    Linux_SambaHost REF PartComponent;
+
+    Linux_SambaPrinterOptions REF GroupComponent;
+};
+
+
+// ===================================================================
+// Linux_SambaAllowHostsForShare
+// ===================================================================
+[Association, Aggregation]
+class Linux_SambaAllowHostsForShare : CIM_Component {
+
+    [Aggregate]
+    Linux_SambaHost REF PartComponent;
+
+    Linux_SambaShareOptions REF GroupComponent;
+};
+
+
+// ===================================================================
+// Linux_SambaDenyHostsForShare
+// ===================================================================
+[Association, Aggregation]
+class Linux_SambaDenyHostsForShare : CIM_Component {
+
+    [Aggregate]
+    Linux_SambaHost REF PartComponent;
+
+    Linux_SambaShareOptions REF GroupComponent;
+};
+
+
+// ===================================================================
+// Linux_SambaDenyHostsForGlobal
+// ===================================================================
+[Association, Aggregation]
+class Linux_SambaDenyHostsForGlobal : CIM_Component {
+
+    [Aggregate]
+    Linux_SambaHost REF PartComponent;
+
+    [Min (1), Max (1)]
+    Linux_SambaGlobalOptions REF GroupComponent;
+};
+
+
+// ===================================================================
+// Linux_SambaDenyHostsForPrinter
+// ===================================================================
+[Association, Aggregation]
+class Linux_SambaDenyHostsForPrinter : CIM_Component {
+
+    [Aggregate]
+    Linux_SambaHost REF PartComponent;
+
+    Linux_SambaPrinterOptions REF GroupComponent;
+};
+
+
+// ===================================================================
+// Linux_SambaGlobalForService
+// ===================================================================
+[Association]
+class Linux_SambaGlobalForService : CIM_ElementSettingData {
+
+    [Min (1), Max (1)]
+    Linux_SambaGlobalOptions REF SettingData;
+
+    [Min (1), Max (1)]
+    Linux_SambaService REF ManagedElement;
+};
+
+// ===================================================================
+// end of file
+// ===================================================================

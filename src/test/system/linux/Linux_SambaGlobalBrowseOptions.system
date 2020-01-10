@@ -1,0 +1,14 @@
+********************************************************************************
+class : Linux_SambaGlobalBrowseOptions
+
+--------------------------------------------------------------------------------
+Linux_SambaGlobalBrowseOptions : -eq 1
+
+--------------------------------------------------------------------------------
+Name : -eq Global
+
+InstanceID : -eq smbd
+Caption : -empty
+Description : -empty
+ElementName : -empty
+

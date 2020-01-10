@@ -1,0 +1,22 @@
+********************************************************************************
+class : Linux_SambaServiceConfiguration
+objectPath : Linux_SambaServiceConfiguration.Name="smbd",ConfigurationFile="/etc/samba/smb.conf"
+--------------------------------------------------------------------------------
+Instance                                                       enumInstanceNames
+
+--------------------------------------------------------------------------------
+Instance                                                           enumInstances
+
+--------------------------------------------------------------------------------
+Instance                                                                     get
+
+--------------------------------------------------------------------------------
+Instance                                                                  create
+Expected Exception : NOT_SUPPORTED
+
+--------------------------------------------------------------------------------
+Instance                                                                     set
+
+--------------------------------------------------------------------------------
+Instance                                                                  delete
+Expected Exception : NOT_SUPPORTED

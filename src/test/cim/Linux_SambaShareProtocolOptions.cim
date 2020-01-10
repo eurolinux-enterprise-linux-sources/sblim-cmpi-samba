@@ -1,0 +1,23 @@
+********************************************************************************
+class : Linux_SambaShareProtocolOptions
+objectPath : Linux_SambaShareProtocolOptions.InstanceID="smbd",Name="wbemsmt-testshare2",Caption="",Description="",ElementName="",AclCompatibility=0,EASupport=FALSE,NTACLSupport=TRUE
+--------------------------------------------------------------------------------
+Instance                                                       enumInstanceNames
+
+--------------------------------------------------------------------------------
+Instance                                                           enumInstances
+
+--------------------------------------------------------------------------------
+Instance                                                                     get
+
+--------------------------------------------------------------------------------
+Instance                                                                  create
+Expected Exception : NOT_SUPPORTED
+
+--------------------------------------------------------------------------------
+Instance                                                                     set
+
+--------------------------------------------------------------------------------
+Instance                                                                  delete
+Expected Exception : NOT_SUPPORTED
+

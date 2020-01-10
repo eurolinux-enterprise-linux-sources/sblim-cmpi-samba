@@ -1,0 +1,36 @@
+********************************************************************************
+association : Linux_SambaPrinterSecurityForGlobal
+objectPath : Linux_SambaPrinterSecurityForGlobal.SettingData=Linux_SambaPrinterSecurityOptions.InstanceID="smbd",Name="wbemsmt-testprinter1",ManagedElement=Linux_SambaGlobalOptions.InstanceID="smbd",Name="Global"
+sourceRole : SettingData
+targetRole : ManagedElemen
+sourceClass : Linux_SambaPrinterSecurityOptions
+targetClass : Linux_SambaGlobalOptions
+
+--------------------------------------------------------------------------------
+Instance                                                       enumInstanceNames
+
+--------------------------------------------------------------------------------
+Instance                                                           enumInstances
+
+--------------------------------------------------------------------------------
+Instance                                                                     get
+
+--------------------------------------------------------------------------------
+Instance                                                                     set
+Expected Exception : NOT_SUPPORTED
+
+--------------------------------------------------------------------------------
+Instance                                                                  delete
+Expected Exception : NOT_SUPPORTED
+
+--------------------------------------------------------------------------------
+Association                                                          associators
+
+--------------------------------------------------------------------------------
+Association                                                      associatorNames
+
+--------------------------------------------------------------------------------
+Association                                                           references
+
+--------------------------------------------------------------------------------
+Association                                                       referenceNames

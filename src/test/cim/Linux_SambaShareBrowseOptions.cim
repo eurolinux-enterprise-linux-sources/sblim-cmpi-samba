@@ -1,0 +1,23 @@
+********************************************************************************
+class : Linux_SambaShareBrowseOptions
+objectPath : Linux_SambaShareBrowseOptions.InstanceID="smbd",Name="wbemsmt-testshare1",Caption="",Description="",ElementName="",Browsable=TRUE
+--------------------------------------------------------------------------------
+Instance                                                       enumInstanceNames
+
+--------------------------------------------------------------------------------
+Instance                                                           enumInstances
+
+--------------------------------------------------------------------------------
+Instance                                                                     get
+
+--------------------------------------------------------------------------------
+Instance                                                                  create
+Expected Exception : NOT_SUPPORTED
+
+--------------------------------------------------------------------------------
+Instance                                                                     set
+
+--------------------------------------------------------------------------------
+Instance                                                                  delete
+Expected Exception : NOT_SUPPORTED
+

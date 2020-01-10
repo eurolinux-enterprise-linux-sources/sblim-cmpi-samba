@@ -1,0 +1,23 @@
+********************************************************************************
+class : Linux_SambaGlobalPrintingOptions
+objectPath : Linux_SambaGlobalPrintingOptions.InstanceID="smbd",Name="Global",Caption="",Description="",ElementName="",CupsOptions="raw",DefaultDevMode=TRUE,MaxPrintjobs=500,MaxReportedPrintjobs=0,PrintCommand="lpr -r -P",UseClientDriver=FALSE,PrintcapCacheTime=750,SystemPrinterName=""
+--------------------------------------------------------------------------------
+Instance                                                       enumInstanceNames
+
+--------------------------------------------------------------------------------
+Instance                                                           enumInstances
+
+--------------------------------------------------------------------------------
+Instance                                                                     get
+
+--------------------------------------------------------------------------------
+Instance                                                                  create
+Expected Exception : NOT_SUPPORTED
+
+--------------------------------------------------------------------------------
+Instance                                                                     set
+
+--------------------------------------------------------------------------------
+Instance                                                                  delete
+Expected Exception : NOT_SUPPORTED
+

@@ -1,0 +1,14 @@
+********************************************************************************
+class : Linux_SambaGlobalSecurityOptions
+
+--------------------------------------------------------------------------------
+Linux_SambaGlobalSecurityOptions : -eq 1
+
+--------------------------------------------------------------------------------
+Name : -eq Global
+
+InstanceID : -eq smbd
+Caption : -empty
+Description : -empty
+ElementName : -empty
+

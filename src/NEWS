@@ -1,0 +1,74 @@
+Changes in 1.0-1
+==============================================================================
+- Change licensing from CPL to EPL
+
+Changes in 0.5.6-1
+==============================================================================
+- Maintenance release
+
+Changes in 0.5.5-1
+==============================================================================
+- cmpi-samba: Includes fixes testsuite issues  
+
+Changes in 0.5.4-1
+==============================================================================
+- 1939839  cmpi-samba: Registered Profile support 
+
+Changes in 0.5.3-1
+==============================================================================
+- 1845493  cmpi-samba: Include proper group definition for RPM build
+- 1815306  cmpi-samba: Man page for the samba specific config file
+- 1814509  cmpi-samba: Enhancements to build process
+- 1769647  cmpi-samba: Parallel requests cause provider to quit
+
+Changes in 0.5.2-1
+==============================================================================
+- 1794679  cmpi-samba: base tests on current delivered testsuite
+- 1794656  cmpi-samba: Creation of new system user does not appear
+- 1794654  cmpi-samba: Include information on WBEM-SMT client app
+
+Changes in 0.5.1-1
+==============================================================================
+- 1775667  cmpi-samba: Still using ShadowRepository
+
+Changes in 0.5.0-1
+==============================================================================
+- 1764888  cmpi-samba: More specific on package content
+- 1762059  cmpi-samba: Type conversion issue for string arrays
+- 1757460  cmpi-samba: Server status not reflected properly
+- 1755726  cmpi-samba: Retrieval of smb users wrong
+- 1747732  cmpi-samba: Model upgrade for ECUTE 2.3.6 usage
+- 1746588  cmpi-samba: Linux_SambaDenyHostsForGlobal not working
+- 1746584  cmpi-samba: Cleanup for test cases
+- 1741424  cmpi-samba: no modifyInst value in the test case
+- 1741421  cmpi-samba: providing full Object Path in the test cases
+- 1741033  cmpi-samba: reordered the test cases
+- 1737895  cmpi-samba: Unresolved symbols in service class
+- 1724483  cmpi-samba: GetInstance uses still shadow repository
+- 1632460  cmpi-samba: Use Servicename as InstanceId
+
+Changes in 0.2.3-1
+==============================================================================
+- #1608539  cmpi-samba: existency checks in gi methods for Host classes
+- #1608544  cmpi-samba: Improvements to test cases for ci on assocs
+- #1608698  cmpi-samba: Build does not pass 'make distcheck'
+
+Changes in 0.2.2-1
+==============================================================================
+- #1574612  smb: Implement full functionality for ei, ein, gi, si
+- #1573860  smb: build pics up needless files
+- #1572281  smb: libcmpiCppImpl.so not found
+- #1572276  smb: invalid existency checks in cI of ForceUserForGlobal
+- #1572262  smb: Build does not include correct system libraries
+- #1572257  smb: SBLIM TestSuite execution script with trapping
+- #1572250  smb: Allocated memory not freed
+- #1572235  Smb: Associator calls for Users do return wrong results
+
+Changes in 0.2.1-1
+==============================================================================
+This is a major release upgrade for our inital release.
+
+- Lots of bug fixes
+- Lots of improvements
+- Lots of stability enhancements
+
